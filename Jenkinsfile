@@ -2,34 +2,40 @@ pipeline {
     agent any
 
     stages {
+        stage('Git checkout') {
+            steps{
+                // Get source code from a GitHub repository
+                git branch:'main', url:'https://github.com/Leo1piece/chatgptbackendTest.git'
+            }
+        }
+        
+        stage('npm install') {
+            steps{
+                dir("./apis/userprofile/") {
+                    sh 'npm install'
+                }
+            }
+        }
+        
+        stage('Tests') {
+            steps{
+                dir("./apis/userprofile/") {
+                    sh 'npm test'
+                }
+            }
+        }
+        
+        stage('npm coverage') {
+            steps{
+                dir("./apis/userprofile/") {
+                    sh 'npm run cover'
+                }
+            }
+        }
 
-        stage('Checkout') {
-            steps {
-                //all branch tigger jenkins，需要加multibranch
-                git branch: '*', credentialsId: 'chatgptbackend', url: 'https://github.com/Leo1piece/chatgptbackendTest.git'
-                echo 'checkout..'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                sh 'cp .env.example .env'
-                sh 'npm install'
-                sh 'npm install eslint --save-dev'
-                sh 'npm run build'
-                sh 'pwd'
-                sh 'ls -la'
-                //sh 'docker build -t $registry/$image:$BUILD_NUMBER .'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+        stage('Publish') {
+            steps{
+                sh 'ls -la ./apis/userprofile/'
             }
         }
     }
