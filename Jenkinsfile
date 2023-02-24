@@ -21,7 +21,7 @@ pipeline {
             steps {
                 //all branch tigger jenkins，需要加multibranch
                // git branch: '*', credentialsId: 'chatgptbackend', url: 'https://github.com/Leo1piece/chatgptbackendTest.git'
-                 git branch:'main', url:'https://github.com/Leo1piece/chatgptbackendTest.git'
+                git branch:'main', url:'https://github.com/Leo1piece/chatgptbackendTest.git'
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
                 sh 'npm install'
                // sh 'npm install eslint --save-dev'
                 sh 'npm run start'
-             
+            
                 //sh 'docker build -t $registry/$image:$BUILD_NUMBER .'
             }
         }
