@@ -7,6 +7,7 @@ pipeline {
             steps {
                 //all branch tigger jenkins，需要加multibranch
                 git branch: '*', credentialsId: 'chatgptbackend', url: 'https://github.com/Leo1piece/chatgptbackendTest.git'
+                echo 'checkout..'
             }
         }
         stage('Build') {
