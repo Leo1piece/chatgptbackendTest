@@ -28,8 +28,10 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'cp .env.example .env'
-                sh 'npm install'
+                sh 'pwd'
+                //sh 'npm install'
+                //sh 'cp .env.example .env'
+                sh 'mv .env.example .env'
                // sh 'npm install eslint --save-dev'
                 sh 'npm run start'
             
