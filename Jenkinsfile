@@ -29,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'pwd'
-                sh 'ls la'
+                sh 'ls -la'
                 sh 'npm install'
                 //sh 'cp .env.example .env'
                 sh 'mv .env.example .env'
