@@ -31,7 +31,7 @@ pipeline {
                 sh 'cp .env.example .env'
                 sh 'npm install'
                 sh 'npm install eslint --save-dev'
-                sh 'npm run build'
+                sh 'npm run start'
                 sh 'pwd'
                 sh 'ls -la'
                 //sh 'docker build -t $registry/$image:$BUILD_NUMBER .'
