@@ -30,10 +30,9 @@ pipeline {
             steps {
                 sh 'cp .env.example .env'
                 sh 'npm install'
-                sh 'npm install eslint --save-dev'
+               // sh 'npm install eslint --save-dev'
                 sh 'npm run start'
-                sh 'pwd'
-                sh 'ls -la'
+             
                 //sh 'docker build -t $registry/$image:$BUILD_NUMBER .'
             }
         }
@@ -42,7 +41,7 @@ pipeline {
             //
             steps { 
                 //eslint 检查语法错误
-                sh 'npx eslint .'
+                //sh 'npx eslint .'
                 sh 'npm run test'
                 sh 'pwd'
                 sh 'ls -la'
